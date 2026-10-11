@@ -1,0 +1,20 @@
+{
+  "name": "task-api-node-sdlc",
+  "version": "1.0.0",
+  "description": "Task Management API with Node.js 24 native tests, pnpm and IBM Bob",
+  "main": "src/app.js",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "node --test test/**/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
+  }
+}
