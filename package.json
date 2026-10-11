@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Task Management API with Node.js 24 native tests, pnpm and IBM Bob",
   "main": "src/app.js",
-  "packageManager": "pnpm@12.11.2",
   "engines": {
     "node": ">=24.0.0"
   },
