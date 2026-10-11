@@ -21,9 +21,32 @@ app.resetState = () => {
   );
 };
 
-// GET /tasks - List all tasks
+// GET /tasks - List all tasks, optionally filtered by ?completed=true|false
 app.get('/tasks', (req, res) => {
-  res.json(tasks);
+  const { completed } = req.query;
+
+  if (completed === undefined) {
+    return res.json(tasks);
+  }
+
+  if (completed !== 'true' && completed !== 'false') {
+    return res.status(400).json({ error: 'completed must be "true" or "false"' });
+  }
+
+  const isCompleted = completed === 'true';
+  res.json(tasks.filter((t) => t.completed === isCompleted));
+});
+
+// PATCH /tasks/:id/complete - Mark a task as completed
+app.patch('/tasks/:id/complete', (req, res) => {
+  const task = tasks.find((t) => t.id === Number(req.params.id));
+
+  if (!task) {
+    return res.status(404).json({ error: 'Task not found' });
+  }
+
+  task.completed = true;
+  res.json(task);
 });
 
 // POST /tasks - Create a new task
